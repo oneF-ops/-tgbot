@@ -10,7 +10,7 @@ import { BOT_TOKEN } from './config.js';
 
 import db from './database.js';
 
-import { recognizeImage } from './ocr.js';
+//import { recognizeImage } from './ocr.js';
 
 import {
 parseBetText,
@@ -193,20 +193,6 @@ await ctx.reply(`
 
 });
 
-bot.on('photo', async (ctx) => {
-
-try {
-
-    const photo = ctx.message.photo.pop();
-
-    const file = await ctx.telegram.getFile(photo.file_id);
-
-    const url = `https://api.telegram.org/file/bot${BOT_TOKEN}/${file.file_path}`;
-
-    const response = await axios({
-        url,
-        responseType: 'stream'
-    });
 
     const imagePath = `temp/${Date.now()}.jpg`;
 
